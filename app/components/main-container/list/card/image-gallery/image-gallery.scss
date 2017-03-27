@@ -1,0 +1,91 @@
+$promo-background: #509c3b;
+$recommended-background: #2772db;
+:host {
+    display: flex;
+}
+
+.image-gallery-container {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    .nav-left,
+    .nav-right {
+        position: absolute;
+        border-radius: 90px;
+        top: 50%;
+        background: #FFF;
+        padding: 4px;
+        color: $recommended-background;
+        cursor: pointer;
+        @media(max-width: 991px) {
+            padding: 1px;
+        }
+    }
+    .nav-left {
+        left: 0;
+        margin-left: 5px;
+    }
+    .nav-right {
+        right: 0;
+        margin-right: 5px;
+    }
+    .ribbon-wrapper {
+        position: absolute;
+        width: 30px;
+        left: 20px;
+        background: $promo-background;
+        top: -7px;
+        padding: 5px;
+        color: #FFF;
+        font-weight: bold;
+        word-break: break-all;
+        @media(max-width: 991px) {
+            line-height: 3vw;
+            font-size: 1.8vw;
+            width: 20px;
+            left: 5px;
+            padding: 3px;
+        }
+        .promo-ribbon {
+            position: relative;
+            &:after {
+                content: ' ';
+                position: absolute;
+                width: 0;
+                height: 0;
+                right: -15px;
+                top: -7px;
+                border-width: 5px 4px;
+                border-style: solid;
+                border-color: transparent transparent #666 #666;
+                @media(max-width: 991px) {
+                    right: -13px;
+                    top: -3px;
+                }
+            }
+        }
+    }
+    .recommended-banner {
+        position: absolute;
+        top: 0;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        background: $recommended-background;
+        color: #FFF;
+        @media(max-width: 991px) {
+            font-size: 2vw;
+        }
+    }
+    figure {
+        margin: 0;
+        padding: 0;
+        img {
+            width: 100%;
+            @media(max-width: 991px) {
+                height: 100%;
+            }
+        }
+    }
+}

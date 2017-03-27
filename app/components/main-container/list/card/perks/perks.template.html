@@ -1,0 +1,10 @@
+<span *ngFor="let perk of perks">
+    <span *ngIf="perk.active" class="perk glyphicon" [ngClass]="{
+        'glyphicon-glass': perk.key === 'drinks',
+        'glyphicon-blackboard': perk.key === 'tv',
+        'glyphicon-phone-alt': perk.key === 'roomservice',
+        'glyphicon-trash': perk.key === 'cleaning',
+        'glyphicon-apple': perk.key === 'breakfast',
+        'glyphicon-signal': perk.key === 'wifi'
+        }"></span>
+</span>

@@ -1,0 +1,76 @@
+:host {
+    color: #fff;
+    header {
+        background: #174380;
+        .main-nav {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            aside {
+                @media (max-width: 991px) {
+                    padding:0;
+                }
+                figure {
+                    img {
+                        @media (max-width: 991px) {
+                            width: 100%;
+                        }
+                    }
+                }
+                nav {
+                    @media (max-width: 991px) {
+                        font-size: 4vw;
+                        margin: 5px 0 0 0;
+                    }
+                }
+            }
+        }
+    }
+    ul {
+        li {
+            display: inline-block
+        }
+    }
+    .top-nav {
+        ul {
+            font-size: 12px;
+            margin: 0;
+            li {
+                img,
+                span {
+                    margin: 0 5px;
+                }
+                margin: 0 5px;
+            }
+        }
+        &.icon {
+            font-size: 24px;
+            margin: 10px;
+            span {
+                margin-right: 10px;
+            }
+        }
+    }
+    .section-nav {
+        border-top: 1px solid #5e82a6;
+        border-bottom: 1px solid #5e82a6;
+        background: -moz-linear-gradient(left, rgba(23, 67, 128, 1) 0%, rgba(64, 103, 145, 0.48) 45%, rgba(64, 103, 145, 0.41) 51%, rgba(64, 103, 145, 0.49) 58%, rgba(23, 67, 128, 1) 100%);
+        background: -webkit-linear-gradient(left, rgba(23, 67, 128, 1) 0%, rgba(64, 103, 145, 0.48) 45%, rgba(64, 103, 145, 0.41) 51%, rgba(64, 103, 145, 0.49) 58%, rgba(23, 67, 128, 1) 100%);
+        background: linear-gradient(to right, rgba(23, 67, 128, 1) 0%, rgba(64, 103, 145, 0.48) 45%, rgba(64, 103, 145, 0.41) 51%, rgba(64, 103, 145, 0.49) 58%, rgba(23, 67, 128, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#174380', endColorstr='#174380', GradientType=1);
+        font-size: 14px;
+        font-weight: bold;
+        ul {
+            text-align: center;
+            margin: 5px 0;
+            li {
+                margin: 0 20px;
+                &:hover {
+                    cursor: pointer;
+                }
+                span.glyphicon-chevron-down {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}

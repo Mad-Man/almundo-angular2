@@ -1,0 +1,33 @@
+<div class="col-xs-12 list-item" *ngIf="hotel">
+    <image-gallery class="col-xs-4 nopadding" [hotel]="hotel"></image-gallery>
+    <section class="col-xs-5 hotel-info">
+        <h5>{{hotel.name}}</h5>
+        <p>
+            <stars [quantity]="hotel.stars" [fontSize]="fontSize"></stars>
+            <span *ngIf="hotel.roomOnly" class="room-only"><span class="bed-icon"></span>Solo la habitaci&oacute;n</span>
+        </p>
+        <p>
+            <perks *ngIf="hotel.perks" [perks]="hotel.perks"></perks>
+        </p>
+    </section>
+    <section class="col-xs-3 price-box">
+        <span>Precio por noche por habitaci&oacute;n</span>
+        <p *ngIf="!hotel.promo" class="price">
+            <span class="currency">{{hotel.currency}}</span>
+            <span class="price-ammount">{{hotel.price}}</span>
+        </p>
+        <p *ngIf="hotel.promo" class="price">
+            <span class="currency">{{hotel.currency}}</span>
+            <span class="price-ammount">{{hotel.promo.discountValue}}</span>
+        </p>
+        <p *ngIf="hotel.promo" class="promo-price">Precio sin promo <strong>{{hotel.currency}}</strong>{{hotel.price}}</p>
+        <p *ngIf="hotel.taxes && !hotel.taxes.value">
+            <span>{{hotel.taxes.label}}</span>
+        </p>
+        <button class="am-custom-btn">Ver Hotel</button>
+        <div *ngIf="hotel.paymentMethods" class="payment-options">
+            <p *ngIf="hotel.paymentMethods.payments">Pag&aacute; en cuotas</p>
+            <p *ngIf="hotel.paymentMethods.onsite">Pag&aacute; en destino</p>
+        </div>
+    </section>
+</div>

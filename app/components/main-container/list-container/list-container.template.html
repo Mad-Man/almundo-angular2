@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="col-xs-12 hidden-xs hidden-sm">
+        <div class=" breadcrumbs">
+            <a href="#">home</a>
+            <span *ngFor="let chunk of urlChunks;  let last = last">/
+                 <a *ngIf="!last" href="#">{{chunk}}</a> <span *ngIf="last">{{chunk}}</span>
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-12 search-status-container" [@panelTrigger]="animationState.status">
+        <h3 class="hidden-md hidden-lg" (click)="toggleAnimationState('status')">Modificar b&uacute;squeda
+            <span class="glyphicon glyphicon-triangle-bottom" [ngClass]="{'glyphicon-triangle-bottom' : animationState.status === 'close-panel', 'glyphicon-triangle-top': animationState.status === 'open-panel'}">
+              </span>
+        </h3>
+        <div class="search-status">
+            <h3>Hoteles disponibles para:</h3>
+            <span class="glyphicon glyphicon-map-marker"></span><span class="search-status-value">{{destinationId}}</span>
+            <span class="glyphicon glyphicon-calendar"></span><span class="search-status-value">24/01/17</span>
+            <span class="glyphicon glyphicon-calendar"></span><span class="search-status-value">10/02/17</span>
+            <span class="glyphicon glyphicon-user"></span><span class="search-status-value">2 H&uacute;espedes</span>
+            <a href="#">Modificar b&uacute;squeda</a>
+        </div>
+    </div>
+</div>
+
+<article class="container list-content">
+    <div class="col-xs-12 hidden-xs hidden-sm order-dropdown">
+        <div>
+            Ordenar
+            <select (change)="orderHotels($event)">
+                <option value="relevance">M&aacute;s relevante</option>
+                <option value="stars">Cantidad de Estrellas</option>
+                <option value="name">Nombre</option>
+            </select>
+        </div>
+    </div>
+    <aside class="col-xs-12 col-md-3 filters">
+        <article class="map-container">
+            <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="8">
+                <sebm-google-map-marker *ngFor="let hotel of hotels | listFilter: filters" [latitude]="hotel.cord.lat" [longitude]="hotel.cord.lng"
+                    [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue.png'">
+                </sebm-google-map-marker>
+            </sebm-google-map>
+            <h4 class="map-footer-label">Ver hoteles en el mapa</h4>
+        </article>
+        <article class="filter-container" [@panelTrigger]="animationState.filters">
+            <h3 class="hidden-md hidden-lg" (click)="toggleAnimationState('filters')">Filtrar
+                <span class="glyphicon glyphicon-triangle-bottom" [ngClass]="{'glyphicon-triangle-bottom' : animationState.filters === 'close-panel', 'glyphicon-triangle-top': animationState.filters === 'open-panel'}">
+              </span>
+            </h3>
+            <filter-bar *ngIf="filters && hotels" [filters]="filters" [hotels]="hotels"></filter-bar>
+        </article>
+    </aside>
+    <div class="col-xs-12 hidden-md hidden-lg order-dropdown">
+        <div>
+            Ordenar
+            <select (change)="orderHotels($event)">
+                <option value="relevance">M&aacute;s relevante</option>
+                <option value="stars">Cantidad de Estrellas</option>
+                <option value="name">Nombre</option>
+            </select>
+        </div>
+    </div>
+    <aside class="col-xs-12 col-md-9 list">
+        <list [filters]="filters" [hotels]="hotels"></list>
+    </aside>
+</article>

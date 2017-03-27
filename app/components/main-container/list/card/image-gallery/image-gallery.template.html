@@ -1,0 +1,11 @@
+<div class="image-gallery-container">
+    <span *ngIf="hotel.recommended" class="recommended-banner">¡ Hotel Recomendado !</span>
+    <span *ngIf="hotel.promo && hotel.promo.active" class="ribbon-wrapper">
+        <span class="promo-ribbon">{{hotel.promo.label}}</span>
+    </span>
+    <span *ngIf="isGallery" class="nav-left glyphicon glyphicon-menu-left" (click)="prevImage()"></span>
+    <span *ngIf="isGallery" class="nav-right glyphicon glyphicon-menu-right" (click)="nextImage()"></span>
+    <figure>
+        <img src="{{imageSource}}" alt="" />
+    </figure>
+</div>

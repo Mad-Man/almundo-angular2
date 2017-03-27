@@ -1,0 +1,52 @@
+<h5 class="hidden-xs hidden-sm">Filtrar</h5>
+<form>
+    <div class="filter-box search" [@filterTrigger]="animationState.search">
+        <p class="title">
+            <span class="glyphicon glyphicon-search"></span>
+            <span>Nombre del Hotel</span>
+            <span class="glyphicon glyphicon-triangle-bottom pull-right" 
+            [ngClass]="{'glyphicon-triangle-bottom' : animationState.search === 'close-filter', 'glyphicon-triangle-top': animationState.search === 'open-filter'}"
+            (click)="toggleAnimationState('search')">
+            </span>
+        </p>
+        <input type="text" [(ngModel)]="search" name="nameFilter" placeholder="Ingrese el nombre del hotel">
+        <button class="am-custom-btn" (click)="addSearchFilter()">Aceptar</button>
+    </div>
+    <div class="filter-box" [@filterTrigger]="animationState.range">
+        <div class="price-range-container">
+            <p class="title">
+                <span>$ Precio por noche</span>
+                 <span class="glyphicon glyphicon-triangle-bottom pull-right" 
+                [ngClass]="{'glyphicon-triangle-bottom' : animationState.range === 'close-filter', 'glyphicon-triangle-top': animationState.range === 'open-filter'}"
+                (click)="toggleAnimationState('range')">
+                </span>
+            </p>
+            <nouislider [config]="rangeConfig" [(ngModel)]="range" [tooltips]="[ rangeConfig.tooltip, rangeConfig.tooltip ]" (change)="changePriceRange($event)"
+                name="rangeFilter">
+            </nouislider>
+            <p *ngIf="!rangeConfig.tooltip" class="range-display">
+                <span class="pull-left">$ {{range[0]}}</span>
+                <span class="pull-right">$ {{range[1]}}</span>
+            </p>
+        </div>
+    </div>
+    <div class="filter-box list-star-filter" [@filterTrigger]="animationState.stars">
+        <p class="title">
+            <span class="glyphicon glyphicon-star"></span><span>Estrellas</span>
+            <span class="glyphicon glyphicon-triangle-bottom pull-right" 
+            [ngClass]="{'glyphicon-triangle-bottom' : animationState.stars === 'close-filter', 'glyphicon-triangle-top': animationState.stars === 'open-filter'}"
+            (click)="toggleAnimationState('stars')">
+            </span>
+        </p>
+        <div>
+            <div *ngFor="let option of options; let i = index">
+                <input type="checkbox" value="{{option.value}}" (change)="checkboxChanged($event)" [checked]="option.checked">
+                <label *ngIf="i === 0 && hotels">Todas las Estrellas ({{hotels.length}})</label>
+                <label *ngIf="i > 0">
+                    <stars [quantity]="option.value"></stars>
+                    <span>({{filterHotelsByStars(option.value)}})</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</form>

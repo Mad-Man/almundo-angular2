@@ -1,0 +1,105 @@
+  $text-color: #de6400;
+  .list-item {
+      margin: 0 0 10px 0;
+      background: #FFF;
+      padding: 5px;
+      display: flex;
+      border: 1px solid #EEE;
+      .hotel-info {
+          h5 {
+              font-size: 12px;
+              font-weight: bold;
+              white-space: nowrap;
+              @media (max-width: 991px) {
+                  font-size: 2vw;
+                  margin: 0 0 5px 0;
+              }
+          }
+          p {
+              @media (max-width: 991px) {
+                  margin:0;
+              }
+          }
+      }
+      .room-only {
+          color: $text-color;
+          display: block;
+          margin-top: 4px;
+          font-weight: bold;
+          @media (max-width: 991px) {
+              font-size: 2vw;
+              margin: 0;
+          }
+          .bed-icon {
+              display: inline-block;
+              width: 20px;
+              @media (max-width: 991px) {
+                  width: 15px;
+              }
+              &:before {
+                  font: normal normal normal 14px/1 FontAwesome;
+                  @media (max-width: 991px) {
+                      font: normal normal normal 10px/1 FontAwesome;
+                  }
+                  content: "\f236";
+                  display: inline-block;
+              }
+          }
+      }
+      .price-box {
+          border-left: 1px dashed #999;
+          align-items: stretch;
+          text-align: center;
+          @media (max-width: 991px) {
+              font-size: 1.2vw;
+              padding: 0;
+              line-height: 1vw;
+          }
+          span:first-of-type {
+              display: inline-block;
+              margin: 0 0 5px 0;
+          }
+          p {
+              margin: 2px 0;
+          }
+          .promo-price {
+              strong {
+                  margin: 0 2px;
+              }
+          }
+          .price {
+              color: $text-color;
+              span {
+                  vertical-align: text-top;
+              }
+              .currency {
+                  font-size: 14px;
+                  @media (max-width: 991px) {
+                      font-size: 3vw;
+                      line-height: 3vw;
+                  }
+              }
+              .price-ammount {
+                  font-size: 24px;
+                  font-weight: bold;
+                  @media (max-width: 991px) {
+                      font-size: 4vw;
+                      line-height: 4vw;
+                  }
+              }
+          }
+          .payment-options {
+              font-weight: bold;
+          }
+          .am-custom-btn {
+              margin: 10px 0;
+              width: 80%;
+              @media (max-width: 991px) {
+                  margin: 0;
+                  font-size: 2vw;
+                  padding: 2px;
+                  line-height: 3vw;
+              }
+          }
+      }
+  }
